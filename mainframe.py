@@ -14,8 +14,11 @@ class MainFrame(wx.Frame):
 		wx.Button(self.panel, label="source", pos=(10,10))
 		self.src = wx.TextCtrl(self.panel, size=(400,30), pos=(150, 10))
 		
-		wx.Button(self.panel, label="target", pos=(10,100))
-		self.target = wx.TextCtrl(self.panel,  size=(400,30), pos=(150, 100))
+		wx.Button(self.panel, label="target", pos=(10,50))
+		self.target = wx.TextCtrl(self.panel,  size=(400,30), pos=(150, 50))
+		
+		
+		
 		
 		self.statusbar = self.CreateStatusBar()
 		

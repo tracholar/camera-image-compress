@@ -6,6 +6,7 @@
 import os, glob
 from os.path import join
 from PIL import Image
+import sys
 
 
 def print_info(msg):
@@ -26,7 +27,7 @@ def batch_compress_image(src, target,
 
 	fs = os.listdir(src)
 	jpg_fs = [f for f in fs if f not in ('.', '..') and f[-3:].lower() in extends]
-	sub_dir = [f for f in fs if f not in ('.', '..') and f[-3:].lower() not in extends]
+	sub_dir = [f for f in fs if f not in ('.', '..') and os.path.isdir(join(src, f))]
 	
 	if not os.path.exists(target):
 		os.mkdir(target)
@@ -71,5 +72,6 @@ def batch_compress_image(src, target,
 						callback)
 
 if __name__ == '__main__':	
-	batch_compress_image('test/srcdata','test/targetdata')
+	assert(len(sys.argv)>=3)
+	batch_compress_image(sys.argv[1],sys.argv[2])
 	print 'Done!'
